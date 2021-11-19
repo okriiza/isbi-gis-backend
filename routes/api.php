@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\GetDataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('getDaerah', [GetDataController::class, 'getArea'])
+    ->name('getDaerah');
+Route::get('getUnsur', [GetDataController::class, 'getElement'])
+    ->name('getUnsur');
+Route::get('getJenis', [GetDataController::class, 'getType'])
+    ->name('getJenis');
+Route::get('getDetail/{idElement}/{idArea}/{idType}', [GetDataController::class, 'getDetailElementById'])
+    ->name('getDetail');
