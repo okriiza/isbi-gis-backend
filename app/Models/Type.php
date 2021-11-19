@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'element_id', 'name_type',
+    ];
+
+    public function element()
+    {
+        return $this->belongsTo(Element::class, 'element_id', 'id');
+    }
 }

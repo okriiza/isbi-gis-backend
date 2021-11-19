@@ -9,9 +9,9 @@ class Area extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'kode',
-        'name',
-        'lat',
-        'long'
+        'kode_area',
+        'name_area',
+        'latitude',
+        'longitude'
     ];
 }

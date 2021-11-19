@@ -16,25 +16,25 @@ class ElementSeeder extends Seeder
     {
         $elements = [
             [
-                'name' => 'Bahasa',
+                'name_element' => 'Bahasa',
             ],
             [
-                'name' => 'Religi',
+                'name_element' => 'Religi',
             ],
             [
-                'name' => 'Kesenian',
+                'name_element' => 'Kesenian',
             ],
             [
-                'name' => 'Ekonomi',
+                'name_element' => 'Ekonomi',
             ],
             [
-                'name' => 'Pengetahuan',
+                'name_element' => 'Pengetahuan',
             ],
             [
-                'name' => 'Teknologi',
+                'name_element' => 'Teknologi',
             ],
             [
-                'name' => 'Kekerabatan & Organisasi Sosial',
+                'name_element' => 'Kekerabatan & Organisasi Sosial',
             ],
 
         ];

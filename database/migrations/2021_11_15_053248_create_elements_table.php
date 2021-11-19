@@ -15,7 +15,7 @@ class CreateElementsTable extends Migration
     {
         Schema::create('elements', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name_element');
             $table->timestamps();
         });
     }

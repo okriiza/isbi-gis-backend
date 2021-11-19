@@ -18,8 +18,7 @@ class CreateDetailElementsTable extends Migration
             $table->integer('element_id');
             $table->integer('area_id');
             $table->integer('type_id');
-            $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->text('image');
             $table->text('video');
             $table->string('source');
