@@ -61,8 +61,7 @@
                                             <td>{{ $detailElement->video }}</td>
                                             <td>{{ $detailElement->source }}</td>
                                             <td>
-                                                <img src="{{ Storage::url($detailElement->image) }}" alt="img" width="100"
-                                                    height="100">
+                                                <img src="{{ $detailElement->image }}" alt="img" width="100" height="100">
                                             </td>
                                             <td>
                                                 <a href="{{ route('detail.element.edit', $detailElement->id) }}"
