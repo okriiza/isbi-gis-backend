@@ -24,4 +24,13 @@ class DetailElement extends Model
     {
         return $this->belongsTo(Element::class, 'element_id', 'id');
     }
+    public function getImageAttribute($value)
+    {
+        return url('storage/' . $value);
+    }
+    protected $hidden = [
+        'element_id',
+        'area_id',
+        'type_id',
+    ];
 }

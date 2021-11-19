@@ -16,4 +16,7 @@ class Type extends Model
     {
         return $this->belongsTo(Element::class, 'element_id', 'id');
     }
+    protected $hidden = [
+        'element_id',
+    ];
 }
