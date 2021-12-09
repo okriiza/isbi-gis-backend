@@ -42,14 +42,14 @@ class AreaSeeder extends Seeder
             [
                 'kode_area' => '3205',
                 'name_area' => 'Kabupaten Garut',
-                'latitude' => '-7.248400',
-                'longitude' => '107.909653',
+                'latitude' => '-7.2162751',
+                'longitude' => '107.8990084',
             ],
             [
                 'kode_area' => '3206',
                 'name_area' => 'Kabupaten Tasikmalaya',
-                'latitude' => '-7.325900',
-                'longitude' => '108.220932',
+                'latitude' => '-7.5486367',
+                'longitude' => '108.1347269',
             ],
             [
                 'kode_area' => '3207',
@@ -66,8 +66,8 @@ class AreaSeeder extends Seeder
             [
                 'kode_area' => '3209',
                 'name_area' => 'Kabupaten Cirebon',
-                'latitude' => '-6.711210',
-                'longitude' => '108.559242',
+                'latitude' => '-6.7961846',
+                'longitude' => '108.5212388',
             ],
             [
                 'kode_area' => '3210',
@@ -90,8 +90,8 @@ class AreaSeeder extends Seeder
             [
                 'kode_area' => '3213',
                 'name_area' => 'Kabupaten Subang',
-                'latitude' => '3.081600',
-                'longitude' => '101.585430',
+                'latitude' => '-6.5711493',
+                'longitude' => '107.7593949',
             ],
             [
                 'kode_area' => '3214',
@@ -114,8 +114,8 @@ class AreaSeeder extends Seeder
             [
                 'kode_area' => '3217',
                 'name_area' => 'Kabupaten Bandung Barat',
-                'latitude' => '-6.902160',
-                'longitude' => '107.619110',
+                'latitude' => '-6.9723836',
+                'longitude' => '107.3704732',
             ],
             [
                 'kode_area' => '3218',
@@ -126,14 +126,14 @@ class AreaSeeder extends Seeder
             [
                 'kode_area' => '3271',
                 'name_area' => 'Kota Bogor',
-                'latitude' => '-6.622620',
-                'longitude' => '106.777191',
+                'latitude' => '-6.5976236',
+                'longitude' => '106.7973811',
             ],
             [
                 'kode_area' => '3272',
                 'name_area' => 'Kota Sukabumi',
-                'latitude' => '-6.920740',
-                'longitude' => '106.931020',
+                'latitude' => '-6.9369274',
+                'longitude' => '106.8822905',
             ],
             [
                 'kode_area' => '3273',
@@ -150,8 +150,8 @@ class AreaSeeder extends Seeder
             [
                 'kode_area' => '3275',
                 'name_area' => 'Kota Bekasi',
-                'latitude' => '-6.224140',
-                'longitude' => '106.991280',
+                'latitude' => '-6.2165485',
+                'longitude' => '107.1304152',
             ],
             [
                 'kode_area' => '3276',
