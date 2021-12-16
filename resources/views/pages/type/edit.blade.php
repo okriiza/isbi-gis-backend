@@ -58,8 +58,23 @@
                                     <select name="element_id" id=""
                                         class="form-control @error('element_id') is-invalid @enderror">
                                         @foreach ($getElement as $item)
-                                            <option {{ $item->id == $type->id ? 'selected' : '' }}
+                                            <option {{ $item->id == $type->element_id ? 'selected' : '' }}
                                                 value="{{ $item->id }}">{{ $item->name_element }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('element_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Nama Daerah</label>
+                                    <select name="area_id" id=""
+                                        class="form-control @error('area_id') is-invalid @enderror">
+                                        @foreach ($getArea as $item)
+                                            <option {{ $item->id == $type->area_id ? 'selected' : '' }}
+                                                value="{{ $item->id }}">{{ $item->name_area }}</option>
                                         @endforeach
                                     </select>
                                     @error('element_id')

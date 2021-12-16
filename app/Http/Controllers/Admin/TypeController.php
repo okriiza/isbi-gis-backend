@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Area;
 use App\Models\Element;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::with('element')->orderBy('created_at', 'DESC')->get();
+        $types = Type::with('element', 'area')->orderBy('created_at', 'DESC')->get();
         return View('pages.type.index', compact('types'));
     }
 
@@ -28,7 +29,8 @@ class TypeController extends Controller
     public function create()
     {
         $getElement = Element::all();
-        return View('pages.type.create', compact('getElement'));
+        $getArea = Area::all();
+        return View('pages.type.create', compact('getElement', 'getArea'));
     }
 
     /**
@@ -41,13 +43,15 @@ class TypeController extends Controller
     {
         $request->validate([
             'name_type' => 'required',
-            'element_id' => 'required'
+            'element_id' => 'required',
+            'area_id' => 'required',
         ]);
 
         $type = Type::create(
             [
                 'name_type' => $request->name_type,
-                'element_id' => $request->element_id
+                'element_id' => $request->element_id,
+                'area_id' => $request->area_id
             ]
         );
 
@@ -75,7 +79,8 @@ class TypeController extends Controller
     {
         $type = Type::findOrFail($id);
         $getElement = Element::all();
-        return View('pages.type.edit', compact('type', 'getElement'));
+        $getArea = Area::all();
+        return View('pages.type.edit', compact('type', 'getElement', 'getArea'));
     }
 
     /**
@@ -89,7 +94,8 @@ class TypeController extends Controller
     {
         $request->validate([
             'name_type' => 'required',
-            'element_id' => 'required'
+            'element_id' => 'required',
+            'area_id' => 'required',
         ]);
 
         $type = Type::findOrFail($id);

@@ -55,11 +55,28 @@
                                     <label>Nama Unsur</label>
                                     <select name="element_id" id=""
                                         class="form-control @error('element_id') is-invalid @enderror">
+                                        <option value="Pilih Unsur">Pilih Unsur</option>
                                         @foreach ($getElement as $item)
                                             <option value="{{ $item->id }}">{{ $item->name_element }}</option>
                                         @endforeach
                                     </select>
                                     @error('element_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Nama Daerah</label>
+                                    <select name="area_id" id=""
+                                        class="form-control @error('area_id') is-invalid @enderror">
+                                        <option value="Pilih Daerah">Pilih Daerah</option>
+
+                                        @foreach ($getArea as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name_area }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('area_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

@@ -15,9 +15,9 @@ class CreateDetailElementsTable extends Migration
     {
         Schema::create('detail_elements', function (Blueprint $table) {
             $table->id();
-            $table->integer('element_id');
-            $table->integer('area_id');
-            $table->integer('type_id');
+            $table->foreignId('element_id')->references('id')->on('elements');
+            $table->foreignId('area_id')->references('id')->on('areas');
+            $table->foreignId('type_id')->references('id')->on('types');
             $table->longText('description');
             $table->text('image');
             $table->text('video');

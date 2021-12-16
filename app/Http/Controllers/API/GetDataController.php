@@ -89,4 +89,23 @@ class GetDataController extends Controller
         else
             return ResponseFormatter::error(null, 'Data Detail Element tidak ada', 404);
     }
+    public function getTypeElementAreaById($idElement, $idArea)
+    {
+        $getTypeElementArea = Type::with([
+            'element' => function ($query) use ($idElement) {
+                $query->where('id', $idElement);
+            },
+            'area' => function ($query) use ($idArea) {
+                $query->where('id', $idArea);
+            }
+        ])
+            ->where('element_id', $idElement)
+            ->where('area_id', $idArea)
+            ->get();
+
+        if ($getTypeElementArea)
+            return ResponseFormatter::success($getTypeElementArea, 'Data Type Element berhasil diambil');
+        else
+            return ResponseFormatter::error(null, 'Data Type Element tidak ada', 404);
+    }
 }

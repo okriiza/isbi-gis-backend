@@ -41,6 +41,7 @@
                                         <th>No</th>
                                         <th>Jenis</th>
                                         <th>Unsur</th>
+                                        <th>Daerah</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -53,6 +54,7 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $type->name_type }}</td>
                                             <td>{{ $type->element->name_element }}</td>
+                                            <td>{{ $type->area->name_area }}</td>
                                             <td>
                                                 <a href="{{ route('type.edit', $type->id) }}" class="btn btn-info btn-sm">
                                                     <i class="fas fa-edit"></i>
