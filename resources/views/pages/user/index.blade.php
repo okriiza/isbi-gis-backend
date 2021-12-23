@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('title')
-    Detail Unsur - GIS ISBI
+    User - GIS ISBI
 @endsection
 @section('content')
     <!-- Content Header (Page header) -->
@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Detail Unsur</h1>
+                    <h1 class="m-0">User</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">List Detail Unsur</li>
+                        <li class="breadcrumb-item active">List User</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -28,10 +28,10 @@
                 <div class="col-lg-12">
                     <div class="card card-primary card-outline">
                         <div class="card-header ">
-                            <h5 class="card-title">List Detail Unsur</h5>
-                            <a href="{{ route('detail.element.create') }}" class="btn btn-sm btn-primary float-right">
+                            <h5 class="card-title">List User</h5>
+                            <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary float-right">
                                 <i class="fas fa-plus"></i>
-                                Tambah Detail Unsur
+                                Tambah User
                             </a>
                         </div>
                         <div class="card-body">
@@ -44,12 +44,9 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Daerah</th>
-                                        <th>Nama Unsur</th>
-                                        <th>Nama Jenis</th>
-                                        <th>Video</th>
-                                        <th>Sumber</th>
-                                        <th>Gambar</th>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -57,25 +54,20 @@
                                     @php
                                         $no = 1;
                                     @endphp
-                                    @foreach ($getDetailElements as $detailElement)
+                                    @foreach ($users as $user)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $detailElement->area->name_area }}</td>
-                                            <td>{{ $detailElement->element->name_element }}</td>
-                                            <td>{{ $detailElement->type->name_type }}</td>
-                                            <td>{{ $detailElement->video }}</td>
-                                            <td>{{ $detailElement->source }}</td>
-                                            <td>
-                                                <img src="{{ $detailElement->image }}" alt="img" width="100" height="100">
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td><span
+                                                    class="badge badge-{{ $user->role == 'admin' ? 'primary' : 'success' }}">{{ $user->role }}</span>
                                             </td>
                                             <td>
-                                                <a href="{{ route('detail.element.edit', $detailElement->id) }}"
-                                                    class="btn btn-info btn-sm">
+                                                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-info btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('detail.element.destroy', $detailElement->id) }}"
-                                                    method="post" class="d-inline"
-                                                    onclick="return confirm('Yakin hapus data?')">
+                                                <form action="{{ route('user.destroy', $user->id) }}" method="post"
+                                                    class="d-inline" onclick="return confirm('Yakin hapus data?')">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-danger btn-sm">
