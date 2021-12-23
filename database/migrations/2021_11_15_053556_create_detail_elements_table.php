@@ -14,10 +14,13 @@ class CreateDetailElementsTable extends Migration
     public function up()
     {
         Schema::create('detail_elements', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('element_id')->references('id')->on('elements');
-            $table->foreignId('area_id')->references('id')->on('areas');
-            $table->foreignId('type_id')->references('id')->on('types');
+            $table->increments('id');
+            $table->integer('element_id')->unsigned();
+            $table->foreign('element_id')->references('id')->on('elements');
+            $table->integer('area_id')->unsigned();
+            $table->foreign('area_id')->references('id')->on('areas');
+            $table->integer('type_id')->unsigned();
+            $table->foreign('type_id')->references('id')->on('types');
             $table->longText('description');
             $table->text('image');
             $table->text('video');

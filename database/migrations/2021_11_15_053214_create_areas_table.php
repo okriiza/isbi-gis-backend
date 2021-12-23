@@ -14,7 +14,7 @@ class CreateAreasTable extends Migration
     public function up()
     {
         Schema::create('areas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('kode_area');
             $table->string('name_area');
             $table->string('latitude');

@@ -14,9 +14,11 @@ class CreateTypesTable extends Migration
     public function up()
     {
         Schema::create('types', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('element_id')->references('id')->on('elements');
-            $table->foreignId('area_id')->references('id')->on('areas');
+            $table->increments('id');
+            $table->integer('element_id')->unsigned();
+            $table->foreign('element_id')->references('id')->on('elements');
+            $table->integer('area_id')->unsigned();
+            $table->foreign('area_id')->references('id')->on('areas');
             $table->string('name_type');
             $table->timestamps();
         });
