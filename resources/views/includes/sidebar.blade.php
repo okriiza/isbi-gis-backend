@@ -36,29 +36,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
      with font-awesome or any other icon font library -->
-                {{-- <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Starter Pages
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Active Page</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inactive Page</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li> --}}
+
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
@@ -68,42 +46,73 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('area.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-globe-asia"></i>
-                        <p>
-                            Daerah
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('element.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-layer-group"></i>
-                        <p>
-                            Unsur
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('type.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-atlas"></i>
-                        <p>
-                            Jenis
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('detail.element.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-globe"></i>
-                        <p>
-                            Detail Unsur
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+                @if (Auth::user()->role == 'admin')
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Master Data
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('area.index') }}" class="nav-link">
+                                    <i class="nav-icon fas fa-globe-asia"></i>
+                                    <p>
+                                        Daerah
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('element.index') }}" class="nav-link">
+                                    <i class="nav-icon fas fa-layer-group"></i>
+                                    <p>
+                                        Unsur
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('type.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-atlas"></i>
+                            <p>
+                                Jenis
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('detail.element.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-globe"></i>
+                            <p>
+                                Detail Unsur
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                @endif
+                @if (Auth::user()->role == 'operator')
+                    <li class="nav-item">
+                        <a href="{{ route('type.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-atlas"></i>
+                            <p>
+                                Jenis
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('detail.element.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-globe"></i>
+                            <p>
+                                Detail Unsur
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
