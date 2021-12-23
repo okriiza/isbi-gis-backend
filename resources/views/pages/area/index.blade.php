@@ -67,14 +67,17 @@
                                                 <a href="{{ route('area.edit', $area->id) }}" class="btn btn-info btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('area.destroy', $area->id) }}" method="post"
-                                                    class="d-inline" onclick="return confirm('Yakin hapus data?')">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-danger btn-sm">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
+                                                @if (Auth::user()->role == 'super_admin')
+                                                    <form action="{{ route('area.destroy', $area->id) }}" method="post"
+                                                        class="d-inline"
+                                                        onclick="return confirm('Yakin hapus data?')">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-danger btn-sm">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

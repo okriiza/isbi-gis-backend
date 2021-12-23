@@ -44,7 +44,7 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
-            'role' => 'required'
+            'role' => 'required|in:admin,operator,super_admin',
         ]);
 
         //store in the database
@@ -95,7 +95,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
-            'role' => 'required'
+            'role' => 'required|in:admin,operator,super_admin'
         ]);
 
         //save data to database

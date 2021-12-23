@@ -87,6 +87,7 @@
                                         <option value="">Pilih Role</option>
                                         <option value="admin">Admin</option>
                                         <option value="operator">Operator</option>
+                                        <option value="super_admin">Super Admin</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm "><i class="fa fa-save"></i>

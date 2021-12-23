@@ -74,6 +74,9 @@
                                         <option {{ $user->role == 'operator' ? 'selected' : '' }} value="operator">
                                             Operator
                                         </option>
+                                        <option {{ $user->role == 'super_admin' ? 'selected' : '' }} value="super_admin">
+                                            Super Admin</option>
+
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm "><i class="fa fa-save"></i>
