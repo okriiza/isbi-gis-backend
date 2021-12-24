@@ -20,6 +20,11 @@ class Type extends Model
     {
         return $this->belongsTo(Area::class, 'area_id', 'id');
     }
+    public function getImageAttribute($value)
+    {
+        if (!$value) return null;
+        return url('storage/' . $value);
+    }
     protected $hidden = [
         'element_id',
         'area_id',
