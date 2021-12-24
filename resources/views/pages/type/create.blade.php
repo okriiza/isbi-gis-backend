@@ -82,6 +82,16 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label>Image</label>
+                                    <input type="file" name="image"
+                                        class="form-control-file @error('image') is-invalid @enderror">
+                                    @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                                 <button type="submit" class="btn btn-primary btn-sm "><i class="fa fa-save"></i>
                                     Simpan</button>
                             </form>

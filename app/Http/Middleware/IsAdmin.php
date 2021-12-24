@@ -21,6 +21,8 @@ class IsAdmin
             return $next($request);
         } elseif (Auth::user() && Auth::user()->role == 'super_admin') {
             return $next($request);
+        } elseif (Auth::user() && Auth::user()->role == 'operator') {
+            return $next($request);
         }
         return redirect('/');
     }

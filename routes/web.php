@@ -24,6 +24,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])
         ->name('home');
+    // Route::middleware(['isOprator'])->group(function () {
+    //     Route::resource('area', AreaController::class);
+    //     Route::resource('element', ElementController::class);
+    // });
     Route::middleware(['isAdmin'])->group(function () {
         Route::resource('area', AreaController::class);
         Route::resource('element', ElementController::class);
@@ -42,10 +46,6 @@ Route::middleware(['auth'])->group(function () {
             ->name('detail.element.update');
         Route::delete('detailElement/{id}/destroy', [DetailElementController::class, 'destroy'])
             ->name('detail.element.destroy');
-    });
-    Route::middleware(['isOprator'])->group(function () {
-        Route::resource('area', AreaController::class);
-        Route::resource('element', ElementController::class);
     });
 });
 

@@ -20,6 +20,7 @@ class CreateTypesTable extends Migration
             $table->integer('area_id')->unsigned();
             $table->foreign('area_id')->references('id')->on('areas');
             $table->string('name_type');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -47,6 +47,7 @@
                                         <th>Jenis</th>
                                         <th>Unsur</th>
                                         <th>Daerah</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -60,6 +61,8 @@
                                             <td>{{ $type->name_type }}</td>
                                             <td>{{ $type->element->name_element }}</td>
                                             <td>{{ $type->area->name_area }}</td>
+                                            <td><img width="100" height="100" src="{{ Storage::url($type->image) }}"
+                                                    alt="{{ $type->name_type }}"></td>
                                             <td>
                                                 <a href="{{ route('type.edit', $type->id) }}" class="btn btn-info btn-sm">
                                                     <i class="fas fa-edit"></i>

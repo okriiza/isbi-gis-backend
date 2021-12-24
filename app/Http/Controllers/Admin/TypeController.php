@@ -7,6 +7,7 @@ use App\Models\Area;
 use App\Models\Element;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TypeController extends Controller
 {
@@ -45,13 +46,16 @@ class TypeController extends Controller
             'name_type' => 'required',
             'element_id' => 'required',
             'area_id' => 'required',
+            'area_id' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg',
         ]);
 
         $type = Type::create(
             [
                 'name_type' => $request->name_type,
                 'element_id' => $request->element_id,
-                'area_id' => $request->area_id
+                'area_id' => $request->area_id,
+                'image' => $request->image ? $request->file('image')->store('assets/image_type', 'public') : null,
             ]
         );
 
@@ -96,10 +100,24 @@ class TypeController extends Controller
             'name_type' => 'required',
             'element_id' => 'required',
             'area_id' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg',
         ]);
 
         $type = Type::findOrFail($id);
-        $type->update($request->all());
+        if (request('image')) {
+            Storage::disk('public')->delete($type->image);
+            $image = request()->file('image')->store('assets/image_type', 'public');
+        } elseif ($type->image) {
+            $image = $type->image;
+        } else {
+            $image = null;
+        }
+        $type->update([
+            'name_type' => $request->name_type,
+            'element_id' => $request->element_id,
+            'area_id' => $request->area_id,
+            'image' => $image,
+        ]);
 
         return redirect()->route('type.index')->with('success', 'Successfully updated type');
     }
@@ -113,8 +131,8 @@ class TypeController extends Controller
     public function destroy($id)
     {
         $type = Type::findOrFail($id);
+        Storage::disk('public')->delete($type->image);
         $type->delete();
-
         return redirect()->route('type.index')->with('success', 'Successfully deleted type');
     }
 }

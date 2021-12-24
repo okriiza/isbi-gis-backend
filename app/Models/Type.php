@@ -9,7 +9,7 @@ class Type extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'element_id', 'area_id', 'name_type',
+        'element_id', 'area_id', 'name_type', 'image'
     ];
 
     public function element()
