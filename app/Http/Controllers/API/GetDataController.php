@@ -82,7 +82,7 @@ class GetDataController extends Controller
             ->where('element_id', $idElement)
             ->where('area_id', $idArea)
             ->where('type_id', $idType)
-            ->get();
+            ->first();
 
         if ($getDetailElement)
             return ResponseFormatter::success($getDetailElement, 'Data Detail Element berhasil diambil');
