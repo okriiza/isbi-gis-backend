@@ -9,7 +9,7 @@ class Type extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'element_id', 'area_id', 'name_type', 'image'
+        'element_id', 'area_id', 'name_type', 'slug', 'image'
     ];
 
     public function element()
@@ -24,6 +24,10 @@ class Type extends Model
     {
         if (!$value) return null;
         return url('storage/' . $value);
+    }
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
     protected $hidden = [
         'element_id',

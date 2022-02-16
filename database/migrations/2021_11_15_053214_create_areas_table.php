@@ -17,6 +17,7 @@ class CreateAreasTable extends Migration
             $table->increments('id');
             $table->string('kode_area');
             $table->string('name_area');
+            $table->string('slug');
             $table->string('latitude');
             $table->string('longitude');
             $table->timestamps();

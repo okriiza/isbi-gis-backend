@@ -11,6 +11,7 @@ class Area extends Model
     protected $fillable = [
         'kode_area',
         'name_area',
+        'slug',
         'latitude',
         'longitude'
     ];

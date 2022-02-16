@@ -25,7 +25,7 @@ Route::get('getUnsur', [GetDataController::class, 'getElement'])
     ->name('getUnsur');
 Route::get('getJenis', [GetDataController::class, 'getType'])
     ->name('getJenis');
-Route::get('getDetail/{idElement}/{idArea}/{idType}', [GetDataController::class, 'getDetailElementById'])
-    ->name('getDetail');
 Route::get('getJenisById/{idELement}/{idArea}', [GetDataController::class, 'getTypeElementAreaById'])
     ->name('getJenisById');
+Route::get('getDetail/{idElement}/{idArea}/{idType}', [GetDataController::class, 'getDetailElementById'])
+    ->name('getDetail');

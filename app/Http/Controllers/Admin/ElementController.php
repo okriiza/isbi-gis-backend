@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Element;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ElementController extends Controller
 {
@@ -42,7 +43,10 @@ class ElementController extends Controller
             'name_element' => 'required',
         ]);
 
-        Element::create($request->all());
+        Element::create([
+            'name_element' => $request->name_element,
+            'slug' => Str::slug($request->name_element),
+        ]);
 
         return redirect()->route('element.index')
             ->with('success', 'Element created successfully.');
@@ -84,7 +88,10 @@ class ElementController extends Controller
             'name_element' => 'required',
         ]);
 
-        Element::find($id)->update($request->all());
+        Element::find($id)->update([
+            'name_element' => $request->name_element,
+            'slug' => Str::slug($request->name_element),
+        ]);
 
         return redirect()->route('element.index')
             ->with('success', 'Element updated successfully');

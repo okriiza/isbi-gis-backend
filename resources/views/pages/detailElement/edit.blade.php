@@ -93,10 +93,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Photo</label>
+                                    <p>{{ $getDetailElement->image }}</p>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <img src="{{ Storage::url($getDetailElement->image) }}" width="100"
-                                                height="100" alt="image">
+                                            <img src="{{ $getDetailElement->image }}" width="100" height="100"
+                                                alt="image">
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="image"

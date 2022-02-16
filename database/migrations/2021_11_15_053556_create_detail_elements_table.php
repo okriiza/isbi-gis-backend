@@ -16,11 +16,11 @@ class CreateDetailElementsTable extends Migration
         Schema::create('detail_elements', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('element_id')->unsigned();
-            $table->foreign('element_id')->references('id')->on('elements');
+            $table->foreign('element_id')->references('id')->on('elements')->onDelete('cascade');
             $table->integer('area_id')->unsigned();
-            $table->foreign('area_id')->references('id')->on('areas');
+            $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
             $table->integer('type_id')->unsigned();
-            $table->foreign('type_id')->references('id')->on('types');
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
             $table->longText('description');
             $table->text('image');
             $table->text('video');

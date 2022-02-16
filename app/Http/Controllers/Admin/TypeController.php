@@ -8,6 +8,8 @@ use App\Models\Element;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 
 class TypeController extends Controller
 {
@@ -53,6 +55,7 @@ class TypeController extends Controller
         $type = Type::create(
             [
                 'name_type' => $request->name_type,
+                'slug' => Str::slug($request->name_type),
                 'element_id' => $request->element_id,
                 'area_id' => $request->area_id,
                 'image' => $request->image ? $request->file('image')->store('assets/image_type', 'public') : null,
@@ -107,17 +110,22 @@ class TypeController extends Controller
         if (request('image')) {
             Storage::disk('public')->delete($type->image);
             $image = request()->file('image')->store('assets/image_type', 'public');
-        } elseif ($type->image) {
-            $image = $type->image;
+            $type->update([
+                'name_type' => $request->name_type,
+                'slug' => Str::slug($request->name_type),
+                'element_id' => $request->element_id,
+                'area_id' => $request->area_id,
+                'image' => $image,
+            ]);
         } else {
-            $image = null;
+            $type->update([
+                'name_type' => $request->name_type,
+                'slug' => Str::slug($request->name_type),
+                'element_id' => $request->element_id,
+                'area_id' => $request->area_id,
+            ]);
         }
-        $type->update([
-            'name_type' => $request->name_type,
-            'element_id' => $request->element_id,
-            'area_id' => $request->area_id,
-            'image' => $image,
-        ]);
+
 
         return redirect()->route('type.index')->with('success', 'Successfully updated type');
     }

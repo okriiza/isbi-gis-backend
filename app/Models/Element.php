@@ -11,6 +11,7 @@ class Element extends Model
 
     protected $fillable = [
         'name_element',
+        'slug',
     ];
 
     public function type()

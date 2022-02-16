@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Area;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AreaController extends Controller
 {
@@ -44,7 +45,13 @@ class AreaController extends Controller
             'longitude' => 'required',
         ]);
 
-        Area::create($request->all());
+        Area::create([
+            'kode_area' => $request->kode_area,
+            'name_area' => $request->name_area,
+            'slug' => Str::slug($request->name_area),
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
 
         return redirect()->route('area.index')
             ->with('success', 'Area created successfully.');
@@ -89,7 +96,13 @@ class AreaController extends Controller
             'longitude' => 'required',
         ]);
 
-        Area::find($id)->update($request->all());
+        Area::find($id)->update([
+            'kode_area' => $request->kode_area,
+            'name_area' => $request->name_area,
+            'slug' => Str::slug($request->name_area),
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
 
         return redirect()->route('area.index')
             ->with('success', 'Area updated successfully');

@@ -70,12 +70,11 @@ class DetailElementController extends Controller
         $getDetailElement = DetailElement::findOrFail($id);
         if (request('image')) {
             Storage::disk('public')->delete($getDetailElement->image);
-            $thumbnail = request()->file('thumbnail')->store('assets/image_detail_element', 'public');
-        } elseif ($getDetailElement->image) {
-            $thumbnail = $getDetailElement->image;
+            $thumbnail = request()->file('image')->store('assets/image_detail_element', 'public');
         } else {
-            $thumbnail = null;
+            $thumbnail = $getDetailElement->getRawOriginal('image');
         }
+
         $getDetailElement->update([
             'type_id' => $request->type_id,
             'element_id' => $request->element_id,

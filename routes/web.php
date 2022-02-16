@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
     //     Route::resource('area', AreaController::class);
     //     Route::resource('element', ElementController::class);
     // });
-    Route::middleware(['isAdmin'])->group(function () {
+    Route::middleware(['Roles:super_admin,admin'])->group(function () {
         Route::resource('type', TypeController::class);
         Route::resource('user', UserController::class);
 
@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('detailElement/{id}/destroy', [DetailElementController::class, 'destroy'])
             ->name('detail.element.destroy');
     });
-    Route::middleware(['isOprator'])->group(function () {
+    Route::middleware(['Roles:super_admin,admin,operator'])->group(function () {
         Route::resource('area', AreaController::class);
         Route::resource('element', ElementController::class);
     });
