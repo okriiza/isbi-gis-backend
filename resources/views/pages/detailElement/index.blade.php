@@ -47,9 +47,7 @@
                                         <th>Nama Daerah</th>
                                         <th>Nama Unsur</th>
                                         <th>Nama Jenis</th>
-                                        <th>Video</th>
                                         <th>Sumber</th>
-                                        <th>Gambar</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -63,15 +61,15 @@
                                             <td>{{ $detailElement->area->name_area }}</td>
                                             <td>{{ $detailElement->element->name_element }}</td>
                                             <td>{{ $detailElement->type->name_type }}</td>
-                                            <td>{{ $detailElement->video }}</td>
                                             <td>{{ $detailElement->source }}</td>
-                                            <td>
-                                                <img src="{{ $detailElement->image }}" alt="img" width="100" height="100">
-                                            </td>
                                             <td>
                                                 <a href="{{ route('detail.element.edit', $detailElement->id) }}"
                                                     class="btn btn-info btn-sm">
                                                     <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="{{ route('detail.element.show', $detailElement->id) }}"
+                                                    class="btn btn-success btn-sm">
+                                                    <i class="fas fa-eye"></i>
                                                 </a>
                                                 @if (Auth::user()->role == 'super_admin')
                                                     <form
@@ -99,7 +97,6 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-
 @endsection
 
 @push('addon-script')

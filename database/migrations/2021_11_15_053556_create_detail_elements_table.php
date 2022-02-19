@@ -22,8 +22,6 @@ class CreateDetailElementsTable extends Migration
             $table->integer('type_id')->unsigned();
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
             $table->longText('description');
-            $table->text('image');
-            $table->text('video');
             $table->string('source');
             $table->timestamps();
         });

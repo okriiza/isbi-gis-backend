@@ -92,37 +92,6 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Photo</label>
-                                    <p>{{ $getDetailElement->image }}</p>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img src="{{ $getDetailElement->image }}" width="100" height="100"
-                                                alt="image">
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="file" name="image"
-                                                class="form-control-file @error('image') is-invalid @enderror">
-                                        </div>
-                                    </div>
-
-                                    @error('image')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Video</label>
-                                    <input type="text" name="video"
-                                        class="form-control @error('video') is-invalid @enderror"
-                                        value="{{ $getDetailElement->video }}">
-                                    @error('video')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
                                     <label>Description</label>
                                     <textarea name="description"
                                         class="form-control @error('description') is-invalid @enderror" id="summernote"
@@ -157,7 +126,6 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-
 @endsection
 
 @push('addon-script')

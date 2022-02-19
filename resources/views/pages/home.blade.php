@@ -27,6 +27,49 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-globe"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Jumlah Daerah</span>
+                            <span class="info-box-number">
+                                {{ $daerah }}
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-globe"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Jumlah Unsur</span>
+                            <span class="info-box-number">{{ $unsur }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Jumalah User</span>
+                            <span class="info-box-number">{{ $user }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary card-outline">
                         <div class="card-header">
@@ -45,5 +88,4 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-
 @endsection

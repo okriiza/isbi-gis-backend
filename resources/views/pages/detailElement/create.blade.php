@@ -86,19 +86,38 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Photo</label>
-                                    <input type="file" name="image"
-                                        class="form-control-file @error('image') is-invalid @enderror">
-                                    @error('image')
+                                    <input type="file" name="path_image[]"
+                                        class="form-control-file @error('path_image') is-invalid @enderror" multiple>
+                                    @error('path_image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label>Audio</label>
+                                    <input type="file" name="path_audio[]"
+                                        class="form-control-file @error('path_audio') is-invalid @enderror" multiple>
+                                    @error('path_audio')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group" id="dynamic_field">
                                     <label>Video</label>
-                                    <input type="text" name="video"
-                                        class="form-control @error('video') is-invalid @enderror">
-                                    @error('video')
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <input type="text" name="path_video[]"
+                                                class="form-control mb-2 @error('path_video') is-invalid @enderror"
+                                                placeholder="Masukan Link Video...">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <span class="btn btn-success btn-sm" id="add"><i
+                                                    class="fas fa-plus"></i></span>
+                                        </div>
+                                    </div>
+                                    @error('path_video')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -108,7 +127,7 @@
                                     <label>Description</label>
                                     <textarea name="description"
                                         class="form-control @error('description') is-invalid @enderror" id="summernote"
-                                        cols="30" rows="10" style="width: 70%"></textarea>
+                                        cols="30" rows="10" style="width: 100%"></textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -118,7 +137,8 @@
                                 <div class="form-group">
                                     <label>Sumber</label>
                                     <input type="text" name="source"
-                                        class="form-control @error('source') is-invalid @enderror">
+                                        class="form-control @error('source') is-invalid @enderror"
+                                        placeholder="Masukan Sumber...">
                                     @error('source')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -137,7 +157,6 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-
 @endsection
 
 @push('addon-script')
@@ -156,5 +175,26 @@
             //     theme: "monokai"
             // });
         })
+
+        //create dynamic input video with button add and remove
+        var i = 1;
+        $('#add').click(function() {
+            i++;
+            $('#dynamic_field').append(
+                '<div id="input' + i + '" class="row mb-3">' +
+                '<div class="col-md-10">' +
+                '<input type="text" name="path_video[]" class="form-control mb-2 @error('path_video') is-invalid @enderror" placeholder="Masukan Link Video...">' +
+                '</div>' +
+                '<div class="col-md-2">' +
+                '<span class="btn btn-danger btn-sm remove" id="remove"><i class="fas fa-minus"></i></span>' +
+                '</div>' +
+                '</div>'
+            );
+        });
+        // create button remove with dynamic input
+        $(document).on('click', '.remove', function() {
+            remove_id = $(this).closest('.row').attr('id');
+            $('#' + remove_id).remove();
+        });
     </script>
 @endpush

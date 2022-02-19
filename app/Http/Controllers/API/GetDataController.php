@@ -68,17 +68,7 @@ class GetDataController extends Controller
     }
     public function getDetailElementById($idElement, $idArea, $idType)
     {
-        $getDetailElement = DetailElement::with([
-            'element' => function ($query) use ($idElement) {
-                $query->where('id', $idElement);
-            },
-            'area' => function ($query) use ($idArea) {
-                $query->where('id', $idArea);
-            },
-            'type' => function ($query) use ($idType) {
-                $query->where('id', $idType);
-            }
-        ])
+        $getDetailElement = DetailElement::with('element', 'type', 'area', 'detailImages', 'detailVideos', 'detailAudios')
             ->where('element_id', $idElement)
             ->where('area_id', $idArea)
             ->where('type_id', $idType)
