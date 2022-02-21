@@ -40,6 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'api_clients', // was users
+            'hash' => true, // was false
+        ],
     ],
 
     /*
@@ -65,10 +71,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'api_clients' => [ // <- Add the api_clients that was configured in our `api` guard
+            'driver' => 'database', // We don't need eloquent
+            'table' => 'api_clients', // Change to be our table name, which happens to be the same as our provider name
+        ],
     ],
 
     /*
@@ -93,6 +99,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
     ],
 
     /*

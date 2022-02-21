@@ -18,14 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('getDaerah', [GetDataController::class, 'getArea'])
-    ->name('getDaerah');
-Route::get('getUnsur', [GetDataController::class, 'getElement'])
-    ->name('getUnsur');
-Route::get('getJenis', [GetDataController::class, 'getType'])
-    ->name('getJenis');
-Route::get('getJenisById/{idELement}/{idArea}', [GetDataController::class, 'getTypeElementAreaById'])
-    ->name('getJenisById');
-Route::get('getDetail/{idElement}/{idArea}/{idType}', [GetDataController::class, 'getDetailElementById'])
-    ->name('getDetail');
+Route::middleware(['apiaccess:api'])->group(function () {
+    Route::get('getDaerah', [GetDataController::class, 'getArea'])
+        ->name('getDaerah');
+    Route::get('getUnsur', [GetDataController::class, 'getElement'])
+        ->name('getUnsur');
+    Route::get('getJenis', [GetDataController::class, 'getType'])
+        ->name('getJenis');
+    Route::get('getJenisById/{idELement}/{idArea}', [GetDataController::class, 'getTypeElementAreaById'])
+        ->name('getJenisById');
+    Route::get('getDetail/{idElement}/{idArea}/{idType}', [GetDataController::class, 'getDetailElementById'])
+        ->name('getDetail');
+});
