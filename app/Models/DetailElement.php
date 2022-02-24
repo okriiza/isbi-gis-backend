@@ -4,14 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class DetailElement extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
+
     protected $fillable = [
         'element_id', 'area_id', 'type_id', 'description', 'source',
     ];
-
+    public function getActivitylogOptions(): LogOptions
+    {
+        $user = Auth::user()->name;
+        return LogOptions::defaults()
+            ->logOnly(['name_audio', 'path_audio', 'detail_element_id'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$user} has been {$eventName} Detail Element");
+        // Chain fluent methods for configuration options
+    }
     public function type()
     {
         return $this->belongsTo(Type::class, 'type_id', 'id');

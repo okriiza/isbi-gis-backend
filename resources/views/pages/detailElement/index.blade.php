@@ -71,18 +71,15 @@
                                                     class="btn btn-success btn-sm">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                @if (Auth::user()->role == 'super_admin')
-                                                    <form
-                                                        action="{{ route('detail.element.destroy', $detailElement->id) }}"
-                                                        method="post" class="d-inline"
-                                                        onclick="return confirm('Yakin hapus data?')">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button class="btn btn-danger btn-sm">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                @endif
+                                                <form action="{{ route('detail.element.destroy', $detailElement->id) }}"
+                                                    method="post" class="d-inline"
+                                                    onclick="return confirm('Yakin hapus data?')">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

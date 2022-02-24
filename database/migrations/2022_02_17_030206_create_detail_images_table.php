@@ -17,6 +17,7 @@ class CreateDetailImagesTable extends Migration
             $table->id();
             $table->integer('detail_element_id')->unsigned();
             $table->foreign('detail_element_id')->references('id')->on('detail_elements')->onDelete('cascade');
+            $table->string('name_image');
             $table->text('path_image');
             $table->timestamps();
         });

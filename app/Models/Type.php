@@ -4,13 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Type extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
+
     protected $fillable = [
         'element_id', 'area_id', 'name_type', 'slug', 'image'
     ];
+    public function getActivitylogOptions(): LogOptions
+    {
+        $user = Auth::user()->name ?? '';
+        return LogOptions::defaults()
+            ->logOnly(['element_id', 'area_id', 'name_type', 'image'])
+            ->setDescriptionForEvent(fn (string $eventName) => "  {$user} has been {$eventName} Type");
+        // Chain fluent methods for configuration options
+    }
 
     public function element()
     {

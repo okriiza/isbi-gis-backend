@@ -74,8 +74,34 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('type.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-atlas"></i>
+                            <p>
+                                Jenis
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('detail.element.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-globe"></i>
+                            <p>
+                                Detail Unsur
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('activityLog') }}" class="nav-link">
+                            <i class="nav-icon fas fa-history"></i>
+                            <p>
+                                Activity Log
+                            </p>
+                        </a>
+                    </li>
                 @endif
-                @if (Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin')
+                @if (Auth::user()->role == 'admin')
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -126,6 +152,14 @@
                             <p>
                                 Detail Unsur
                                 {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('activityLog') }}" class="nav-link">
+                            <i class="nav-icon fas fa-history"></i>
+                            <p>
+                                Activity Log
                             </p>
                         </a>
                     </li>

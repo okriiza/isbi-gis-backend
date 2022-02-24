@@ -7,6 +7,7 @@ use App\Models\Element;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Spatie\Activitylog\Models\Activity;
 
 class ElementController extends Controller
 {
@@ -47,6 +48,11 @@ class ElementController extends Controller
             'name_element' => $request->name_element,
             'slug' => Str::slug($request->name_element),
         ]);
+
+        // activity()
+        //     ->causedBy(auth()->user())
+        //     ->performedOn($element)
+        //     ->log('User Create Element');
 
         return redirect()->route('element.index')
             ->with('success', 'Element created successfully.');

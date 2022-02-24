@@ -55,9 +55,11 @@ class DetailElementController extends Controller
             'area_id' => 'required',
             'source' => 'required',
             'description' => 'required',
-            'path_video' => 'required',
+            'name_image' => 'required',
             'path_image' => 'required',
+            'name_audio' => 'required',
             'path_audio' => 'required',
+            'path_video' => 'required',
         ]);
 
         $detailElement = DetailElement::create([
@@ -68,36 +70,31 @@ class DetailElementController extends Controller
             'source' => $request->source,
         ]);
 
-        //create multiple image
-        if ($request->hasFile('path_image')) {
-            $images = [];
-            $files = $request->file('path_image');
-            foreach ($files as $file) {
-                $images[] = $file->store('assets/image_detail_element', 'public');
-            }
-            foreach ($images as $image) {
+        //create image
+        if ($request->name_image && $request->hasFile('path_image')) {
+            foreach ($request->name_image as $key => $value) {
+                $path_image = $request->path_image[$key]->store('assets/image_detail_element', 'public');;
                 DetailImage::create([
-                    'path_image' => $image,
-                    'detail_element_id' => $detailElement->id
+                    'detail_element_id' => $detailElement->id,
+                    'name_image' => $request->name_image[$key],
+                    'path_image' => $path_image,
                 ]);
             }
         }
 
-        //create multiple audio
-        if ($request->hasFile('path_audio')) {
-            $files = $request->file('path_audio');
-            foreach ($files as $file) {
-                $name_audio = $file->getClientOriginalName();
-                $path_audio = $file->store('assets/audio_detail_element', 'public');
+        //create audio
+        if ($request->name_audio && $request->hasFile('path_audio')) {
+            foreach ($request->name_audio as $key => $value) {
+                $path_audio = $request->path_audio[$key]->store('assets/audio_detail_element', 'public');;
                 DetailAudio::create([
-                    'name_audio' => $name_audio,
+                    'detail_element_id' => $detailElement->id,
+                    'name_audio' => $request->name_audio[$key],
                     'path_audio' => $path_audio,
-                    'detail_element_id' => $detailElement->id
                 ]);
             }
         }
 
-        //create video dynamic input
+        //create video
         if ($request->path_video) {
             foreach ($request->path_video as $video => $value) {
                 DetailVideo::create([
@@ -135,7 +132,7 @@ class DetailElementController extends Controller
         }
 
         return redirect()->route('detail.element.index')
-            ->with('success', 'Detail Element created successfully.');
+            ->with('success', 'Image created successfully.');
     }
 
     public function storeVideo(Request $request, $id)
@@ -157,7 +154,7 @@ class DetailElementController extends Controller
         }
 
         return redirect()->route('detail.element.index')
-            ->with('success', 'Detail Element created successfully.');
+            ->with('success', 'Video created successfully.');
     }
 
     public function storeAudio(Request $request, $id)
@@ -183,7 +180,7 @@ class DetailElementController extends Controller
         }
 
         return redirect()->route('detail.element.index')
-            ->with('success', 'Detail Element created successfully.');
+            ->with('success', 'Audio created successfully.');
     }
 
     public function show($id)

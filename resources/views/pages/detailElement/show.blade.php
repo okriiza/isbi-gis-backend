@@ -77,17 +77,18 @@
                                     <div class="col-sm-6 col-xl-4 mb-3">
                                         <img src="{{ $item->path_image }}" width="150" height="150"
                                             class="rounded mb-2">
-                                        <div class="">
-                                            <form action="{{ route('detail.element.destroyImage', $item->id) }}"
-                                                method="post" class="d-inline"
-                                                onclick="return confirm('Yakin hapus data?')">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-danger btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
-                                        </div>
+                                        <h5>{{ $item->name_image }}</h4>
+                                            <div class="">
+                                                <form action="{{ route('detail.element.destroyImage', $item->id) }}"
+                                                    method="post" class="d-inline"
+                                                    onclick="return confirm('Yakin hapus data?')">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
                                     </div>
                                 @empty
                                     <div class="col-sm-12 col-xl-12 mb-3">
